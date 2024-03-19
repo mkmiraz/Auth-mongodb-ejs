@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Login</title>
+    <link rel="icon" href="./images/01.jpg" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <%- body %>
+
+    <script>
+      const profile = document.querySelector(".PChangeIcon");
+      if (profile) {
+        profile.onchange = (e) => {
+          const imgUrl = URL.createObjectURL(e.target.files[0]);
+
+          document.querySelector(".imgPvu").setAttribute("src", imgUrl);
+        };
+      }
+
+      if (document.querySelector(".gallery_image")) {
+        document.querySelector(".gallery_image").onchange = (e) => {
+          const files = e.target.files;
+          let images = "";
+          for (let i = 0; i < files.length; i++) {
+            const Url = URL.createObjectURL(files[i]);
+            images += ` <img  src="${Url}" alt="" />`;
+          }
+          document.getElementById("galleryImgShow").innerHTML = images;
+        };
+      }
+    </script>
+  </body>
+</html>
